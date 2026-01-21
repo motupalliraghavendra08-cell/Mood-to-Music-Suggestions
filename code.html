@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music for Mood</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            text-align: center;
+        }
+
+        .box {
+            width: 360px;
+            background: white;
+            margin: 80px auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        li {
+            background: #eee;
+            margin: 6px 0;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2 class="title">Music for Mood 🎵</h2>
+    <p class="subtitle">Choose your mood • Feel the music</p>
+
+    <select id="mood">
+        <option value="">Select your mood</option>
+        <option value="happy">Happy 😊</option>
+        <option value="sad">Sad 😔</option>
+        <option value="angry">Angry 😠</option>
+        <option value="chill">Chill 😌</option>
+        <option value="motivational">Motivational 💪</option>
+        <option value="devotional">Devotional 🙏</option>
+    </select>
+
+    <button onclick="suggestMusic()">Suggest Music</button>
+
+    <ul id="musicList"></ul>
+</div>
+
+<script>
+function suggestMusic() {
+
+    const mood = document.getElementById("mood").value;
+    const musicList = document.getElementById("musicList");
+
+    musicList.innerHTML = "";
+
+    const songs = {
+        happy: [
+            "Nuvvu Navvukuntu",
+            "Suvvi Suvvi Suvvala",
+            "Naatho Vastava",
+            "Muvvala Navvakala"
+        ],
+        sad: [
+            "Bujji Thalli",
+            "Em Cheppanu",
+            "Vaaram",
+            "Bagundu Poo"
+        ],
+        angry: [
+            "Firestorm",
+            "Ragile Ragile",
+            "Sarkaaru Raa",
+            "Prathi Gadhalo"
+        ],
+        motivational: [
+            "Oke Oka Jeevitam",
+            "Nee Prasnaku",
+            "Mari Anthaga",
+            "Chitti Aduga"
+        ],
+        devotional: [
+            "Bharata Vedamuga",
+            "Anjaneyudu Nee Vadu",
+            "Rama Rama Raghuraman",
+            "Madhura Madhura"
+        ],
+        chill: [
+            "Anukoledenadu",
+            "Yahoon",
+            "Chiru Chiru Navvula",
+            "Dummare Dumma"
+        ]
+    };
+
+    if (mood === "") {
+        alert("Please select a mood");
+        return;
+    }
+
+    songs[mood].forEach(function(song) {
+        const li = document.createElement("li");
+        li.innerText = song;
+        musicList.appendChild(li);
+    });
+}
+</script>
+
+</body>
+</html>
